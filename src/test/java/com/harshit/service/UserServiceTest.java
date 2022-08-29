@@ -83,7 +83,7 @@ class UserServiceTest {
     private final User USER_JANE = MockResource.getMockUserJane();
     private final Post POST_ONE = MockResource.getPostOne();
     private final Comment COMMENT_ONE = MockResource.getCommentOne();
-    private final Country COUNTRY_BANGLADESH = MockResource.getCountryBangladesh();
+    private final Country COUNTRY_INDIA= MockResource.getCountryIndia();
 
     @BeforeEach
     void setUp() {
@@ -180,23 +180,23 @@ class UserServiceTest {
     void shouldUpdateUserInfo_whenUpdateUserInfoDtoIsGiven() {
         UpdateUserInfoDto updateUserInfoDto = UpdateUserInfoDto.builder()
                 .intro("New User Intro")
-                .countryName(COUNTRY_BANGLADESH.getName())
+                .countryName(COUNTRY_INDIA.getName())
                 .build();
 
-        USER_JOHN.setCountry(COUNTRY_BANGLADESH);
+        USER_JOHN.setCountry(COUNTRY_INDIA);
 
         when(securityContext.getAuthentication()).thenReturn(authentication);
         SecurityContextHolder.setContext(securityContext);
         when(SecurityContextHolder.getContext().getAuthentication().getPrincipal()).thenReturn(USER_JOHN.getEmail());
         when(userRepository.findByEmail(USER_JOHN.getEmail())).thenReturn(Optional.of(USER_JOHN));
-        when(countryService.getCountryByName(updateUserInfoDto.getCountryName())).thenReturn(COUNTRY_BANGLADESH);
+        when(countryService.getCountryByName(updateUserInfoDto.getCountryName())).thenReturn(COUNTRY_INDIA);
         when(userRepository.save(any(User.class))).thenReturn(USER_JOHN);
 
         User updatedUser = userService.updateUserInfo(updateUserInfoDto);
 
         verify(userRepository).save(any(User.class));
         assertThat(updatedUser).isNotNull();
-        assertThat(updatedUser.getCountry().getName()).isEqualTo(COUNTRY_BANGLADESH.getName());
+        assertThat(updatedUser.getCountry().getName()).isEqualTo(COUNTRY_INDIA.getName());
     }
 
     @Test

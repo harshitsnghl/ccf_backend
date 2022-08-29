@@ -1,18 +1,13 @@
 package com.harshit.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harshit.common.AppConstants;
-import com.harshit.common.UserPrincipal;
-import com.harshit.dto.*;
-import com.harshit.entity.Post;
-import com.harshit.entity.User;
-import com.harshit.repository.PostRepository;
-import com.harshit.repository.UserRepository;
-import com.harshit.service.JwtTokenService;
-import com.harshit.service.PostService;
-import com.harshit.service.UserService;
-import com.harshit.shared.MockResourceRepo;
-import com.harshit.shared.WithMockAuthUser;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,10 +22,24 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.harshit.common.AppConstants;
+import com.harshit.common.UserPrincipal;
+import com.harshit.dto.LoginDto;
+import com.harshit.dto.ResetPasswordDto;
+import com.harshit.dto.SignupDto;
+import com.harshit.dto.UpdateEmailDto;
+import com.harshit.dto.UpdatePasswordDto;
+import com.harshit.dto.UpdateUserInfoDto;
+import com.harshit.entity.Post;
+import com.harshit.entity.User;
+import com.harshit.repository.PostRepository;
+import com.harshit.repository.UserRepository;
+import com.harshit.service.JwtTokenService;
+import com.harshit.service.PostService;
+import com.harshit.service.UserService;
+import com.harshit.shared.MockResourceRepo;
+import com.harshit.shared.WithMockAuthUser;
 
 @SpringBootTest
 @AutoConfigureMockMvc

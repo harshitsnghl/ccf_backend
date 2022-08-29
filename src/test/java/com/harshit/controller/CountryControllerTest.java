@@ -31,7 +31,7 @@ class CountryControllerTest {
     @MockBean
     CountryService countryService;
 
-    private final Country COUNTRY_BANGLADESH  = MockResource.getCountryBangladesh();
+    private final Country COUNTRY_INDIA = MockResource.getCountryIndia();
     private final String API_URL_PREFIX = "/api/v1";
 
     @BeforeEach
@@ -45,7 +45,7 @@ class CountryControllerTest {
     @Test
     @WithMockAuthUser
     void shouldReturnListOfCountries() throws Exception {
-        when(countryService.getCountryList()).thenReturn(List.of(COUNTRY_BANGLADESH));
+        when(countryService.getCountryList()).thenReturn(List.of(COUNTRY_INDIA));
 
         mockMvc.perform(get(API_URL_PREFIX + "/countries"))
                 .andExpect(status().isOk())

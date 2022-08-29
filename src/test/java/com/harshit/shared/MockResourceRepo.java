@@ -2,8 +2,12 @@ package com.harshit.shared;
 
 import java.util.ArrayList;
 
-import com.harshit.entity.*;
-import com.harshit.enumeration.NotificationType;
+import com.harshit.entity.Comment;
+import com.harshit.entity.Country;
+import com.harshit.entity.Notification;
+import com.harshit.entity.Post;
+import com.harshit.entity.Tag;
+import com.harshit.entity.User;
 import com.harshit.enumeration.Role;
 
 public class MockResourceRepo {

@@ -26,7 +26,7 @@ class CountryServiceTest {
     @Mock
     CountryRepository countryRepository;
 
-    private final Country COUNTRY_BANGLADESH = MockResource.getCountryBangladesh();
+    private final Country COUNTRY_BANGLADESH = MockResource.getCountryIndia();
 
     @BeforeEach
     void setUp() {
