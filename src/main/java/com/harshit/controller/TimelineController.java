@@ -19,21 +19,21 @@ import java.util.List;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class TimelineController {
-    private final PostService postService;
-    private final TagService tagService;
+	private final PostService postService;
+	private final TagService tagService;
 
-    @GetMapping( "/")
-    public ResponseEntity<?> getTimelinePosts(@RequestParam("page") Integer page,
-                                              @RequestParam("size") Integer size) {
-        page = page < 0 ? 0 : page-1;
-        size = size <= 0 ? 5 : size;
-        List<PostResponse> timelinePosts = postService.getTimelinePostsPaginate(page, size);
-        return new ResponseEntity<>(timelinePosts, HttpStatus.OK);
-    }
+	@GetMapping("/")
+	public ResponseEntity<?> getTimelinePosts(@RequestParam("page") Integer page, @RequestParam("size") Integer size,
+			@RequestParam("allPost") Boolean allPost) {
+		page = page < 0 ? 0 : page - 1;
+		size = size <= 0 ? 5 : size;
+		List<PostResponse> timelinePosts = postService.getTimelinePostsPaginate(page, size,allPost);
+		return new ResponseEntity<>(timelinePosts, HttpStatus.OK);
+	}
 
-    @GetMapping( "/tags")
-    public ResponseEntity<?> getTimelineTags() {
-        List<Tag> timelineTags = tagService.getTimelineTags();
-        return new ResponseEntity<>(timelineTags, HttpStatus.OK);
-    }
+	@GetMapping("/tags")
+	public ResponseEntity<?> getTimelineTags() {
+		List<Tag> timelineTags = tagService.getTimelineTags();
+		return new ResponseEntity<>(timelineTags, HttpStatus.OK);
+	}
 }

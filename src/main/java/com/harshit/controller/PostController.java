@@ -17,6 +17,8 @@ import com.harshit.service.TagService;
 import com.harshit.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -212,11 +214,13 @@ public class PostController {
     @GetMapping("/posts/tags/{tagName}")
     public ResponseEntity<?> getPostsByTag(@PathVariable("tagName") String tagName,
                                           @RequestParam("page") Integer page,
-                                          @RequestParam("size") Integer size) {
+                                          @RequestParam("size") Integer size,
+                                          @RequestParam("allPost") Boolean allPost) {
         page = page < 0 ? 0 : page-1;
         size = size <= 0 ? 5 : size;
         Tag targetTag = tagService.getTagByName(tagName);
-        List<PostResponse> taggedPosts = postService.getPostByTagPaginate(targetTag, page, size);
+       
+        List<PostResponse> taggedPosts = postService.getPostByTagPaginate(targetTag, page, size,allPost);
         return new ResponseEntity<>(taggedPosts, HttpStatus.OK);
     }
 }

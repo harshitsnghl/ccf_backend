@@ -15,9 +15,9 @@ public interface PostService {
     Post getPostById(Long postId);
     PostResponse getPostResponseById(Long postId);
     List<PostResponse> getPostsByUserPaginate(User author, Integer page, Integer size);
-    List<PostResponse> getTimelinePostsPaginate(Integer page, Integer size);
+    List<PostResponse> getTimelinePostsPaginate(Integer page, Integer size, Boolean allPost);
     List<PostResponse> getPostSharesPaginate(Post sharedPost, Integer page, Integer size);
-    List<PostResponse> getPostByTagPaginate(Tag tag, Integer page, Integer size);
+    List<PostResponse> getPostByTagPaginate(Tag tag, Integer page, Integer size, Boolean allPost);
     Post createNewPost(String content, MultipartFile postPhoto, List<TagDto> postTags);
     Post updatePost(Long postId, String content, MultipartFile postPhoto, List<TagDto> postTags);
     void deletePost(Long postId);

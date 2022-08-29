@@ -1,6 +1,8 @@
 package com.harshit.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -38,6 +40,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final CountryService countryService;
@@ -80,7 +83,8 @@ public class UserServiceImpl implements UserService {
     public User createNewUser(SignupDto signupDto) {
         try {
             User user = getUserByEmail(signupDto.getEmail());
-            if (user != null) {
+            if (user != null) {          	
+            	log.info("Email id " + user.getEmail() + " already exist");
                 throw new EmailExistsException();
             }
         } catch (UserNotFoundException e) {
