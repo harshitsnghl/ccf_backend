@@ -93,11 +93,11 @@ class UserControllerIntegrationTest {
     @Test
     void signup() throws Exception {
         SignupDto signupDto = SignupDto.builder()
-                .email("mjunaidhira@gmail.com")
-                .password("@P4ssword")
-                .passwordRepeat("@P4ssword")
-                .firstName("Junaid")
-                .lastName("Khan Pathan")
+                .email("harshitsnghl@gmail.com")
+                .password("Qwerty1234!")
+                .passwordRepeat("Qwerty1234!")
+                .firstName("Harshit")
+                .lastName("Singhal")
                 .build();
         String signupDtoJson = mapper.writeValueAsString(signupDto);
 
@@ -107,7 +107,7 @@ class UserControllerIntegrationTest {
                         .content(signupDtoJson)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.email").value("mjunaidhira@gmail.com"));
+                .andExpect(jsonPath("$.email").value("harshitsnghl@gmail.com"));
     }
 
     @Test
