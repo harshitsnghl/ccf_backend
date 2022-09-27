@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
-@Slf4j
 public class PostServiceImpl implements PostService {
 	private final PostRepository postRepository;
 	private final UserService userService;

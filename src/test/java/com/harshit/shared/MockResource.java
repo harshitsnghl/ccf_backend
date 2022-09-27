@@ -2,10 +2,13 @@ package com.harshit.shared;
 
 import java.util.ArrayList;
 
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 import com.harshit.entity.*;
 import com.harshit.enumeration.NotificationType;
 import com.harshit.enumeration.Role;
 
+@MockBean
 public class MockResource {
     public static User getMockUserJohn() {
         return  User.builder()

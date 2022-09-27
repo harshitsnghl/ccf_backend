@@ -21,6 +21,7 @@ import com.harshit.response.UserResponse;
 import com.harshit.service.JwtTokenService;
 import com.harshit.service.PostService;
 import com.harshit.service.UserService;
+import com.harshit.util.FileLoggerUtil;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -28,17 +29,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
-@Slf4j
 public class UserController {
     private final UserService userService;
     private final PostService postService;
     private final JwtTokenService jwtTokenService;
     private final AuthenticationManager authenticationManager;
-
+    private final FileLoggerUtil writeToFileUtil;
+    
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody @Valid SignupDto signupDto) {
         User savedUser = userService.createNewUser(signupDto);
-        log.info("New user registered with email id " + savedUser.getEmail());
+        writeToFileUtil.logRegistration(savedUser.getEmail(),true);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
@@ -51,6 +52,7 @@ public class UserController {
         UserPrincipal userPrincipal = new UserPrincipal(loginUser);
         HttpHeaders newHttpHeaders = new HttpHeaders();
         newHttpHeaders.add(AppConstants.TOKEN_HEADER, jwtTokenService.generateToken(userPrincipal));
+        writeToFileUtil.logLogin(loginUser.getEmail(),true);
         return new ResponseEntity<>(loginUser, newHttpHeaders, HttpStatus.OK);
     }
 

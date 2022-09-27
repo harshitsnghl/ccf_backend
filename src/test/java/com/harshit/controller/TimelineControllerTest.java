@@ -60,7 +60,7 @@ class TimelineControllerTest {
     @Test
     @WithMockAuthUser
     void shouldReturnListOfTimelinePosts() throws Exception {
-        when(postService.getTimelinePostsPaginate(0, 5))
+        when(postService.getTimelinePostsPaginate(0, 5,false))
                 .thenReturn(List.of(
                         new PostResponse(POST_ONE, false),
                         new PostResponse(POST_TWO, false)

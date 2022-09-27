@@ -107,7 +107,7 @@ class PostServiceTest {
                 PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "dateCreated"))
         )).thenReturn(List.of(POST_ONE));
 
-        List<PostResponse> returnedPostList = postService.getTimelinePostsPaginate(0, 5);
+        List<PostResponse> returnedPostList = postService.getTimelinePostsPaginate(0, 5,false);
 
         assertThat(returnedPostList.size()).isEqualTo(1);
     }
@@ -138,7 +138,7 @@ class PostServiceTest {
         )).thenReturn(List.of(POST_ONE));
         when(userService.getAuthenticatedUser()).thenReturn(USER_JOHN);
 
-        List<PostResponse> returnedPostList = postService.getPostByTagPaginate(TAG_ONE, 0, 5);
+        List<PostResponse> returnedPostList = postService.getPostByTagPaginate(TAG_ONE, 0, 5,true);
 
         assertThat(returnedPostList.size()).isEqualTo(1);
         assertThat(returnedPostList.get(0).getPost().getPostTags().get(0)).isEqualTo(TAG_ONE);

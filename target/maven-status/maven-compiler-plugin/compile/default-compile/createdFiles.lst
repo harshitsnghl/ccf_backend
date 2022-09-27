@@ -68,6 +68,7 @@ com/harshit/validator/EmailValidator.class
 com/harshit/group/UserUpdatePasswordGroup.class
 com/harshit/controller/PostController.class
 com/harshit/response/UserResponse.class
+com/harshit/util/FileLoggerUtil.class
 com/harshit/exception/EmptyPostException.class
 com/harshit/response/ErrorResponse.class
 com/harshit/entity/Comment.class
@@ -86,6 +87,7 @@ com/harshit/mapper/MapstructMapperUpdateImpl.class
 com/harshit/annotation/ValidPassword.class
 com/harshit/exception/PostNotFoundException.class
 com/harshit/controller/PostController$2.class
+com/harshit/util/CurrentDateTimeUtil.class
 com/harshit/response/ErrorResponse$ErrorResponseBuilder.class
 com/harshit/annotation/PasswordRepeatEqual.class
 com/harshit/service/UserService.class

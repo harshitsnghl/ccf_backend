@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.harshit.controller.PostControllerTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.229 s <<< FAILURE! - in com.harshit.controller.PostControllerTest
+shouldReturnListOfPosts_whenTagNameIsGiven  Time elapsed: 0.053 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at com.harshit.controller.PostControllerTest.shouldReturnListOfPosts_whenTagNameIsGiven(PostControllerTest.java:273)
+

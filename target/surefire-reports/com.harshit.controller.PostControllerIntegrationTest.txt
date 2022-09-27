@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: com.harshit.controller.PostControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 8.612 s <<< FAILURE! - in com.harshit.controller.PostControllerIntegrationTest
+getPostsByTag  Time elapsed: 1.043 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at com.harshit.controller.PostControllerIntegrationTest.getPostsByTag(PostControllerIntegrationTest.java:466)
+
+deletePostShare  Time elapsed: 0.442 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: null
+ but was: com.harshit.entity.User@517c84fa
+	at com.harshit.controller.PostControllerIntegrationTest.deletePostShare(PostControllerIntegrationTest.java:451)
+

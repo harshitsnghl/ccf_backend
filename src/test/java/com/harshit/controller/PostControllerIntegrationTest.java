@@ -1,5 +1,16 @@
 package com.harshit.controller;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,19 +31,18 @@ import com.harshit.entity.User;
 import com.harshit.enumeration.NotificationType;
 import com.harshit.exception.CommentNotFoundException;
 import com.harshit.exception.PostNotFoundException;
-import com.harshit.repository.*;
-import com.harshit.service.*;
+import com.harshit.repository.CommentRepository;
+import com.harshit.repository.NotificationRepository;
+import com.harshit.repository.PostRepository;
+import com.harshit.repository.TagRepository;
+import com.harshit.repository.UserRepository;
+import com.harshit.service.CommentService;
+import com.harshit.service.NotificationService;
+import com.harshit.service.PostService;
+import com.harshit.service.TagService;
+import com.harshit.service.UserService;
 import com.harshit.shared.MockResourceRepo;
 import com.harshit.shared.WithMockAuthUser;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
